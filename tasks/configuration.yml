@@ -104,14 +104,14 @@
     - section:  keystone_authtoken
       option:   admin_password
       value:    "{{ nova_pass }}"
-    - section:  glance
-      option:   host
+    - section:  DEFAULT
+      option:   glance_host
       value:    "{{ glance_hostname }}"
-    - section:  glance
-      option:   port
+    - section:  DEFAULT
+      option:   glance_port
       value:    "{{ glance_port }}"
-    - section:  glance
-      option:   protocol
+    - section:  DEFAULT
+      option:   glance_protocol
       value:    "{{ glance_protocol }}"
   notify:
     - Restart nova compute
