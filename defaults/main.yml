@@ -24,6 +24,7 @@ my_ip: "{{ ansible_eth0.ipv4.address }}"
 vncserver_proxyclient_address: "{{ my_ip }}"
 vncserver_proxy_address: "{{ my_ip }}"
 novncproxy_base_url: "http://{{ vncserver_proxy_address }}:6080/vnc_auto.html"
+virt_type: kvm
 
 # Neutron
 neutron_hostname: localhost

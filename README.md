@@ -22,6 +22,7 @@ Role Variables
 | `vncserver_proxyclient_address` | `{{ my_ip }}` | The address to use to connect to the vnc proxy ||
 | `vncserver_proxy_address` | `{{ my_ip }}` | The address to which proxy clients should connect ||
 | `novncproxy_base_url` | `"http://{{ vncserver_proxy_address }}:6080/vnc_auto.html"` | Desired novncproxy base_url ||
+| `virt_type` | `kvm` | Desired virtualization type ||
 
 ### RabbitMQ (must exist)
 

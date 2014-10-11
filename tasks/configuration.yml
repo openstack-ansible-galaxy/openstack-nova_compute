@@ -115,3 +115,13 @@
       value:    "{{ glance_protocol }}"
   notify:
     - Restart nova compute
+
+- name: Configure nova compute (HV)
+  ini_file: dest=/etc/nova/nova-compute.conf
+            section="{{ item.section }}"
+            option="{{ item.option }}"
+            value="{{ item.value }}"
+  with_items:
+    - section:  libvirt
+      option:   virt_type
+      value:    "{{ virt_type}}"
