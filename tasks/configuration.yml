@@ -125,3 +125,5 @@
     - section:  libvirt
       option:   virt_type
       value:    "{{ virt_type}}"
+  notify:
+    - Restart nova compute
