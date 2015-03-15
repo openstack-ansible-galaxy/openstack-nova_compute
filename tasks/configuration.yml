@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-- name: Configure nova compute
+- name: Configure Nova Compute
   ini_file: dest=/etc/nova/nova.conf
             section="{{ item.section }}"
             option="{{ item.option }}"
@@ -114,9 +114,9 @@
       option:   glance_protocol
       value:    "{{ glance_protocol }}"
   notify:
-    - Restart nova compute
+    - Restart Nova Compute
 
-- name: Configure nova compute (HV)
+- name: Configure Nova Compute (HV)
   ini_file: dest=/etc/nova/nova-compute.conf
             section="{{ item.section }}"
             option="{{ item.option }}"
@@ -126,4 +126,4 @@
       option:   virt_type
       value:    "{{ virt_type}}"
   notify:
-    - Restart nova compute
+    - Restart Nova Compute

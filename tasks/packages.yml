@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-- name: Install nova compute
+- name: Install Nova Compute
   apt: name="{{ item }}" state=present
   with_items:
     - nova-compute

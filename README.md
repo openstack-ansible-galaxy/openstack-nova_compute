@@ -1,20 +1,22 @@
-Nova compute
+Nova Compute OpenStack Ansible Role
 =========
 
-OpenStack Nova compute service installation
+**Status**
+* [![Build Status](https://travis-ci.org/dguerri/openstack-nova_compute.svg?branch=master)](https://travis-ci.org/dguerri/openstack-nova_compute) on master branch
+* [![Build Status](https://travis-ci.org/dguerri/openstack-nova_compute.svg?branch=development)](https://travis-ci.org/dguerri/openstack-nova_compute) on development branch
+* [![Ansible Galaxy](http://img.shields.io/badge/dguerri-openstack--nova_compute-blue.svg)](https://galaxy.ansible.com/list#/roles/1911) on Ansible Galaxy
+
+OpenStack Nova Compute service installation
 
 _Tested on Ubuntu Precise (12.04) and Trusty (14.04)_
 
 Requirements
 ------------
 
-A MySQL server. See below.
-
 A RabbitMQ server. See below.
 
 Role Variables
 --------------
-### Nova compute (set by this role)
 
 | Name | Default value | Description | Note |
 |---  |---  |---  |--- |
@@ -23,37 +25,17 @@ Role Variables
 | `vncserver_proxy_address` | `{{ my_ip }}` | The address to which proxy clients should connect ||
 | `novncproxy_base_url` | `"http://{{ vncserver_proxy_address }}:6080/vnc_auto.html"` | Desired novncproxy base_url ||
 | `virt_type` | `kvm` | Desired virtualization type ||
-
-### RabbitMQ (must exist)
-
-| Name | Default value | Description | Note |
-|---  |---  |---  |--- |
 | `rabbit_hostname` | `localhost` | Hostname/IP address where the RabbitMQ service runs ||
 | `rabbit_username` | `rabbit_username_default` | RabbitMQ username for nova ||
 | `rabbit_pass` | `rabbit_pass_default` | RabbitMQ password for nova ||
-
-### Neutron (must exist)
-
-| Name | Default value | Description | Note |
-|---  |---  |---  |--- |
 | `neutron_hostname` | `localhost` | Hostname/IP address where the neutron server runs ||
 | `neutron_pass` | `neutron_pass_default` | Neutron admin password ||
 | `neutron_port` | `9696` | Neutron port ||
 | `neutron_protocol` | `http` | Neutron protocol (http/https) ||
-
-### Keystone (must exist)
-
-| Name | Default value | Description | Note |
-|---  |---  |---  |--- |
 | `keystone_admin_port` | `35357` | Keystone admin port ||
 | `keystone_hostname` | `localhost` | Hostname/IP address where keystone runs ||
 | `keystone_port` | `5000` | Keystone port ||
 | `keystone_protocol` | `http` | Keystone protocol (http/https) ||
-
-### Glance (must exist)
-
-| Name | Default value | Description | Note |
-|---  |---  |---  |--- |
 | `glance_hostname` | `localhost` | Hostname/IP address where glance runs ||
 | `glance_port` | `9292` | Glance port ||
 | `glance_protocol` | `http` | Glance protocol (http/https) ||
