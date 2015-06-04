@@ -17,5 +17,7 @@
 # limitations under the License.
 #
 
-- name: Restart Nova Compute
-  service: name={{ service_nova_compute }} state=restarted
+- name: Install nova compute
+  yum: name="{{ item }}" state=present
+  with_items:
+    - openstack-nova-compute

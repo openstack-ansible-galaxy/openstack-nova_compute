@@ -15,6 +15,8 @@ Requirements
 
 A RabbitMQ server. See below.
 
+For RHEL/CentOS, RHOSP or RDO repositories are needed.
+
 Role Variables
 --------------
 
@@ -67,6 +69,10 @@ Example Playbook
 A complete Ansible playbook demo, which uses this role, is available on Github (openstack-ansible-galaxy/vagrant-ansible-openstack) <https://github.com/openstack-ansible-galaxy/vagrant-ansible-openstack>
 
 ---
+
+Credits
+-------
+RedHat support implemented by Abel Boldú <abel.boldu@gmx.com>
 
 
 License
