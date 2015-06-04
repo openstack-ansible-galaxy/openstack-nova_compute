@@ -17,5 +17,10 @@
 # limitations under the License.
 #
 
-- name: Restart Nova Compute
-  service: name={{ nova_compute_service }} state=restarted
+- name: Set service facts
+  set_fact: nova_compute_service="nova-compute"
+  when: ansible_os_family == 'Debian'
+
+- name: Set service facts
+  set_fact: nova_compute_service="openstack-nova-compute"
+  when: ansible_os_family == 'RedHat'
