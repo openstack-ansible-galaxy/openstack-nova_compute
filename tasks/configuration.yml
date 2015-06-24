@@ -50,27 +50,10 @@
     - section:  DEFAULT
       option:   novncproxy_base_url
       value:    "{{ novncproxy_base_url }}"
+    # Neutron
     - section:  DEFAULT
       option:   network_api_class
       value:    nova.network.neutronv2.api.API
-    - section:  DEFAULT
-      option:   neutron_url
-      value:    "{{ neutron_protocol }}://{{ neutron_hostname }}:{{ neutron_port }}"
-    - section:  DEFAULT
-      option:   neutron_auth_strategy
-      value:    keystone
-    - section:  DEFAULT
-      option:   neutron_admin_tenant_name
-      value:    service
-    - section:  DEFAULT
-      option:   neutron_admin_username
-      value:    neutron
-    - section:  DEFAULT
-      option:   neutron_admin_password
-      value:    "{{ neutron_pass }}"
-    - section:  DEFAULT
-      option:   neutron_admin_auth_url
-      value:    "{{ keystone_protocol }}://{{ keystone_hostname }}:{{ keystone_admin_port }}/v2.0"
     - section:  DEFAULT
       option:   linuxnet_interface_driver
       value:    nova.network.linux_net.LinuxOVSInterfaceDriver
@@ -80,21 +63,34 @@
     - section:  DEFAULT
       option:   security_group_api
       value:    neutron
+    - section:  neutron
+      option:   url
+      value:    "{{ neutron_protocol }}://{{ neutron_hostname }}:{{ neutron_port }}"
+    - section:  neutron
+      option:   auth_strategy
+      value:    keystone
+    - section:  neutron
+      option:   admin_tenant_name
+      value:    service
+    - section:  neutron
+      option:   admin_username
+      value:    neutron
+    - section:  neutron
+      option:   admin_password
+      value:    "{{ neutron_pass }}"
+    - section:  neutron
+      option:   admin_auth_url
+      value:    "{{ keystone_protocol }}://{{ keystone_hostname }}:{{ keystone_admin_port }}/v2.0"
+    # Keystone
     - section:  DEFAULT
       option:   auth_strategy
       value:    keystone
     - section:  keystone_authtoken
+      option:   identity_uri
+      value:    "{{ keystone_protocol }}://{{ keystone_hostname }}:{{ keystone_admin_port }}"
+    - section:  keystone_authtoken
       option:   auth_uri
       value:    "{{ keystone_protocol }}://{{ keystone_hostname }}:{{ keystone_port }}/v2.0"
-    - section:  keystone_authtoken
-      option:   auth_host
-      value:    "{{ keystone_hostname }}"
-    - section:  keystone_authtoken
-      option:   auth_port
-      value:    "{{ keystone_port }}"
-    - section:  keystone_authtoken
-      option:   auth_protocol
-      value:    "{{ keystone_protocol }}"
     - section:  keystone_authtoken
       option:   admin_tenant_name
       value:    service
@@ -104,14 +100,15 @@
     - section:  keystone_authtoken
       option:   admin_password
       value:    "{{ nova_pass }}"
-    - section:  DEFAULT
-      option:   glance_host
+    # Glance
+    - section:  glance
+      option:   host
       value:    "{{ glance_hostname }}"
-    - section:  DEFAULT
-      option:   glance_port
+    - section:  glance
+      option:   port
       value:    "{{ glance_port }}"
-    - section:  DEFAULT
-      option:   glance_protocol
+    - section:  glance
+      option:   protocol
       value:    "{{ glance_protocol }}"
   notify:
     - Restart Nova Compute
