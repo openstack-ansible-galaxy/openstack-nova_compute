@@ -1,44 +1,16 @@
----
 language: python
-python: "2.7"
-
+python: '2.7'
 services:
-  - rabbitmq
-
-
+- rabbitmq
 before_install:
-  # Make sure everything's up to date.
-  - sudo apt-get install python-software-properties
-  - sudo add-apt-repository -y cloud-archive:icehouse
-  - sudo apt-get update -qq
-
-
+- sudo apt-get install python-software-properties
+- sudo add-apt-repository -y cloud-archive:icehouse
+- sudo apt-get update -qq
 install:
-  # Install Ansible.
-  - sudo pip install ansible
-
-  # Add ansible.cfg to pick up roles path.
-  - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
-
-
+- sudo pip install ansible
+- '{ echo ''[defaults]''; echo ''roles_path = ../''; } >> ansible.cfg'
 script:
-  # Check the role/playbook's syntax.
-  - ansible-playbook -i tests/inventory tests/test.yml --syntax-check
-
-# open-iscsi cannot be installed on Travis, so Nova Compute cannot be tested
-# there.
-#
-#  # Run the role/playbook with ansible-playbook.
-#  - >
-#    ansible-playbook -i tests/inventory tests/test.yml --connection=local
-#    --sudo
-#
-#  # Test role idempotency
-#  - >
-#    ansible-playbook -i tests/inventory tests/test.yml -t nova-compute
-#    --connection=local --sudo | grep -q 'changed=0.*failed=0'
-#    && (echo 'Idempotence test: pass' && exit 0)
-#    || (echo 'Idempotence test: fail' && exit 1)
-#
-#  # Test serice status
-#  - service nova-compute status
+- ansible-playbook -i tests/inventory tests/test.yml --syntax-check
+notifications:
+  slack:
+    secure: G4COdO2aRQEnFOU+AMMcrCAL6zazzxcfV3i60FH1jdjjc95VROXYbnzpPU1Di46s9QTx83pKRrlBbWWXXy9B3YllxQveVsJyMHLQe39ilE/DkCQYA4HzgKLUaoNupBg2K2zoC/RqvyruMwbl6SRfgs8elaCwnUpNv790Pls4lekyoStFHIYpYS7BdX/Qf7ZffSE8fzMtlcvkjTXGs5Drq5t6Z7Zf5c66R7FcWq83bvd2ssWIqt6EeT5w6+c2JRHcUdSyGgL0HlOe7n19gIxuQ0C+ZLYYDQ+lHRkIFLgWks9+9tFdPDo9a7OKKgV3MVpOO2fHcs3296I4BkJ/+YNNNC4Jh7u/lNvPoHVMbA+fsdALmRymMu3+8OkD+NBGf+JlDTCBJGMmpMpLkoTgJHogYF2gX8dAPxxi/dQqF7dYt/umd24IL+WSBy8I/uJzhVaVvEBEslS3NKTWYQdvUtqVT4dOCqpEP4IZ/XZYyMZ6RUVP7AR06UcrTkrDt/ggYAoOuOMi1S6QIqn4o5Nra0SGTnozk/Md14/JuDLeDmmrHGUVxBgDg2cYUN+XmFha4yn8+K2m3ZVfnykaUNUyRdQ+5ppOijJ3vFKUAExuCnKSE93c13y5CUqPt0ji63BItuhh3K+QfO0u64STBj1Oy5UI7oVyqG1CdFWv3mpw9ZWWye0=
