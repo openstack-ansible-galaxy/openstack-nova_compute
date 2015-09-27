@@ -18,4 +18,4 @@
 #
 
 - name: Restart Nova Compute
-  service: name={{ nova_compute_service }} state=restarted
+  service: name={{ nova_compute_service }} state=restarted enabled=yes

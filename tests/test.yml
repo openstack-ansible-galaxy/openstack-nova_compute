@@ -4,16 +4,15 @@
   remote_user: root
   roles:
     - role: openstack-nova_compute
-      my_ip: "localhost"
-      vncserver_proxyclient_address: "localhost"
-      vncserver_proxy_address: "localhost"
-      novncproxy_base_url: "http://localhost:6080/vnc_auto.html"
-      virt_type: qemu
+      nova_compute_my_ip: "localhost"
+      nova_compute_vncserver_proxyclient_address: "localhost"
+      nova_compute_vncserver_proxy_address: "localhost"
+      nova_compute_novncproxy_base_url: "http://localhost:6080/vnc_auto.html"
+      nova_compute_virt_type: qemu
       neutron_hostname: localhost
       neutron_pass: "neutron pass"
       neutron_port: 3333
       neutron_protocol: http
-      admin_token: "admin token"
       keystone_admin_port: 4444
       keystone_hostname: localhost
       keystone_port: 5555
@@ -21,8 +20,8 @@
       glance_hostname: localhost
       glance_port: 6666
       glance_protocol: http
-      rabbit_hostname: localhost
-      rabbit_username: guest
-      rabbit_pass: guest
+      nova_compute_rabbit_host: localhost
+      nova_compute_rabbit_userid: guest
+      nova_compute_rabbit_password: guest
       tags:
         - nova-api

@@ -18,13 +18,19 @@
 #
 
 # Common
-my_ip: "{{ ansible_eth0.ipv4.address }}"
+nova_compute_my_ip: "{{ ansible_eth0.ipv4.address }}"
+
+# Database
+nova_compute_database_url: sqlite:////var/lib/nova/nova.sqlite
 
 # Nova
-vncserver_proxyclient_address: "{{ my_ip }}"
-vncserver_proxy_address: "{{ my_ip }}"
-novncproxy_base_url: "http://{{ vncserver_proxy_address }}:6080/vnc_auto.html"
-virt_type: kvm
+nova_compute_vncserver_proxyclient_address: "{{ nova_compute_my_ip }}"
+nova_compute_vncserver_proxy_address: "{{ nova_compute_my_ip }}"
+nova_compute_vncserver_proxy_protocol: http
+nova_compute_vncserver_proxy_port: 6080
+nova_compute_novncproxy_base_url: "{{ nova_compute_vncserver_proxy_protocol }}://{{ nova_compute_vncserver_proxy_address }}:{{ nova_compute_vncserver_proxy_port }}/vnc_auto.html"
+nova_compute_vncserver_listen: 0.0.0.0
+nova_compute_virt_type: kvm
 
 # Neutron
 neutron_hostname: localhost
@@ -33,7 +39,6 @@ neutron_port: 9696
 neutron_protocol: http
 
 # Keystone
-admin_token: admin_token_default
 keystone_admin_port: 35357
 keystone_hostname: localhost
 keystone_port: 5000
@@ -45,6 +50,11 @@ glance_port: 9292
 glance_protocol: http
 
 # RabbitMQ
-rabbit_hostname: localhost
-rabbit_username: rabbit_username_default
-rabbit_pass: rabbit_pass_default
+nova_compute_rabbit_userid: rabbit_pass_default
+nova_compute_rabbit_password: rabbit_username_default
+nova_compute_rabbit_virtual_host: /
+nova_compute_rabbit_retry_interval: 1
+nova_compute_rabbit_host: localhost
+nova_compute_rabbit_port: 5672
+nova_compute_rabbit_hosts: "{{ nova_compute_rabbit_host }}:{{ nova_compute_rabbit_port }}"
+nova_compute_rabbit_ha_queues: False
