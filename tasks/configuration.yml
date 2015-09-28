@@ -148,16 +148,3 @@
       value:   "{{ nova_compute_virt_type}}"
   notify:
     - Restart Nova Compute
-
-- name: Configure Nova Compute database
-  ini_file: >
-    dest=/etc/nova/nova.conf
-    section="{{ item.section }}"
-    option="{{ item.option }}"
-    value="{{ item.value }}"
-  with_items:
-    - section: database
-      option: connection
-      value: "{{ nova_compute_database_url }}"
-  notify:
-    - Restart Nova Compute

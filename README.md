@@ -22,7 +22,6 @@ Role Variables
 
 | Name | Default value | Description | Note |
 |---  |---  |---  |--- |
-| `nova_compute_database_url` | `sqlite:////var/lib/nova/nova.sqlite` | Database URI ||
 | `nova_compute_my_ip` | `{{ ansible_eth0.ipv4.address }}` | Management IP for nova-compute |
 | `nova_compute_vncserver_proxyclient_address` | `{{ my_ip }}` | The address to use to connect to the vnc proxy ||
 | `nova_compute_vncserver_proxy_address` | `{{ my_ip }}` | The address to which proxy clients should connect ||
