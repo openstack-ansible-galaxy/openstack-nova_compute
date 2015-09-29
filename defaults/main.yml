@@ -32,6 +32,9 @@ nova_compute_novncproxy_base_url: "{{ nova_compute_vncserver_proxy_protocol }}:/
 nova_compute_vncserver_listen: 0.0.0.0
 nova_compute_virt_type: kvm
 
+# Memcached
+nova_compute_memcached_servers: None
+
 # Neutron
 neutron_hostname: localhost
 neutron_pass: neutron_pass_default

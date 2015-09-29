@@ -77,6 +77,10 @@
     - section:  DEFAULT
       option:   novncproxy_base_url
       value:    "{{ nova_compute_novncproxy_base_url }}"
+    # Memcached
+    - section:  DEFAULT
+      option:   memcached_servers
+      value:    "{{ nova_compute_memcached_servers }}"
     # Neutron
     - section:  DEFAULT
       option:   network_api_class
