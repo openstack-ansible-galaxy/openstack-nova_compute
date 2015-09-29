@@ -21,6 +21,9 @@
 nova_compute_my_ip: "{{ ansible_eth0.ipv4.address }}"
 
 # Nova
+nova_compute_log_dir: /var/log/nova
+nova_compute_log_debug: False
+nova_compute_log_verbose: False
 nova_compute_vncserver_proxyclient_address: "{{ nova_compute_my_ip }}"
 nova_compute_vncserver_proxy_address: "{{ nova_compute_my_ip }}"
 nova_compute_vncserver_proxy_protocol: http

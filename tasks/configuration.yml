@@ -27,6 +27,15 @@
     - section:  DEFAULT
       option:   my_ip
       value:    "{{ nova_compute_my_ip }}"
+    - section:  DEFAULT
+      option:   log_dir
+      value:    "{{ nova_compute_log_dir }}"
+    - section:  DEFAULT
+      option:   debug
+      value:    "{{ nova_compute_log_debug }}"
+    - section:  DEFAULT
+      option:   verbose
+      value:    "{{ nova_compute_log_verbose }}"
     # RabbitMQ
     - section:  DEFAULT
       option:   rpc_backend
