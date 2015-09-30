@@ -23,12 +23,6 @@
 - include: packages.yml
 - include: configuration.yml
 
-- name: Start libvirtd
-  service: name=libvirtd state=started enabled=yes
-  notify:
-    - Restart Nova Compute
-  when: ansible_os_family == 'RedHat'
-
 - meta: flush_handlers
 
 - include: maintenance.yml

@@ -19,3 +19,8 @@
 
 - name: Restart Nova Compute
   service: name={{ nova_compute_service }} state=restarted enabled=yes
+
+- name: Start libvirtd
+  service: name=libvirtd state=started enabled=yes
+  notify:
+    - Restart Nova Compute
