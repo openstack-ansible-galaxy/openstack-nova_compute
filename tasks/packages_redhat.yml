@@ -21,3 +21,5 @@
   yum: name="{{ item }}" state=present
   with_items:
     - openstack-nova-compute
+  notify:
+    - Start libvirtd
